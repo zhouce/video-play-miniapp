@@ -1,0 +1,6 @@
+<!--pages/answer/answer.wxml-->
+<view>
+  <view wx:if="{{h5url}}">
+    <web-view src="{{h5url}}"></web-view>
+  </view>
+</view>

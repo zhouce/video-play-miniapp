@@ -1,0 +1,6 @@
+var isIn = function (arr, o) {
+  return arr.indexOf(o) > -1;
+}
+module.exports = {
+  isIn: isIn
+};

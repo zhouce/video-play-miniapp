@@ -1,0 +1,176 @@
+/**app.wxss**/
+page {
+  width: 100%;
+  height: 100%;
+  font-size: 24rpx;
+}
+
+image {
+  vertical-align: middle;
+}
+
+.container {
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.full {
+  width: 100%;
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.box-sizing {
+  box-sizing: border-box;
+}
+
+.fl-lf {
+  float: left;
+}
+
+.fl-ri {
+  float: right;
+}
+
+.radius1 {
+  border-radius: 10rpx;
+}
+
+.radius2 {
+  border-radius: 20rpx;
+}
+
+.fw {
+  font-weight: bold;
+}
+
+.fs-18 {
+  font-size: 18rpx;
+}
+
+.fs-26 {
+  font-size: 26rpx;
+}
+
+.fs-27 {
+  font-size: 27rpx;
+}
+
+.fs-28 {
+  font-size: 28rpx;
+}
+
+.fs-30 {
+  font-size: 30rpx;
+}
+
+.fs-32 {
+  font-size: 32rpx;
+}
+
+.fs-34 {
+  font-size: 34rpx;
+}
+
+.fc0 {
+  color: #ffffff;
+}
+
+.fc1 {
+  color: #aaaaaa;
+}
+
+.fc2 {
+  color: #434343;
+}
+
+.fc3 {
+  color: #21b2e3;
+}
+
+.bc0 {
+  background-color: #ffffff;
+}
+
+.bc1 {
+  background-color: #eeeeee;
+}
+
+.bc2 {
+  background-color: #f7f7f7;
+}
+
+.border1 {
+  border-top: 2rpx solid #f3f3f3;
+}
+
+.border2 {
+  border-bottom: 2rpx solid #f3f3f3;
+}
+
+.pad-lr-24 {
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+}
+
+.break-word {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.over-hide {
+  overflow: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-over {
+  overflow: hidden;
+  white-space: nowrap;
+  word-wrap: normal;
+  text-overflow: ellipsis;
+}
+
+.no-data {
+  height: 46px;
+  line-height: 46px;
+}
+
+.not-btn {
+  border: none !important;
+  border-radius: 0 !important;
+  font-size: 0 !important;
+  background-color: #ffffff !important;
+}
+
+.share-btn {
+  padding: 0 !important;
+}
+
+.loading-btn {
+  line-height: 46px !important;
+}
+
+.not-btn::after {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.line-clamp2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.empty-img {
+  height: 283rpx;
+  width: 499rpx;
+   margin: 71rpx 0 57rpx 0; 
+}

@@ -1,0 +1,69 @@
+<!--pages/details.wxml-->
+<view class="container">
+  <video id='topVideo' class='top-video w-100' src="{{videoUrl}}" autoplay="{{true}}" controls="{{true}}" poster="{{videoPicUrl}}" bindtimeupdate="timeupdate" danmu-list="{{danmu}}" danmu-btn="{{true}}" enable-danmu="{{true}}" bindplay="videoPlay" bindpause="videoPause" bindended="videoEnd" bindfullscreenchange="fullScreenChange"></video>
+
+  <view class='danmu-input-box border2 box-sizing'>
+    <input class='danmu-input box-sizing bc1 fl-lf' placeholder="发个弹幕，和大家一起聊呗~" maxlength='40' confirm-type="send" value="{{danmuStr}}" bindinput="hasDanMuInput" bindconfirm="confirmDanMuSend" />
+    <view class='fs-32 fl-lf' catchtap="confirmDanMuSend">发送</view>
+  </view>
+
+  <scroll-view class='scroll-box box-sizing' scroll-y="{{true}}" lower-threshold="{{46}}" bindscrolltolower="loadMore">
+    <view>
+      <view class='pad-lr-24 box-sizing border2'>
+        <view class='video-title break-word fw'>{{obj.descriptions ? obj.descriptions : ''}}</view>
+        <view class='fc1'>{{obj.playNum ? obj.playNum : 0}}次播放</view>
+        <view class='operate-box'>
+          <image catchtap="setFocus" class='operate-img1 fl-lf' src='../../assets/images/comment.png'></image>
+          <view class='fl-lf fc2'>评论</view>
+          <button wx:if="{{canIUse}}" open-type="share" class='not-btn share-btn operate-img2 fl-ri mar-top-2 mar-lf-44' hover-class="none">
+            <image class='operate-img2' src='../../assets/images/share.png'></image>
+          </button>
+          <!-- <image class='operate-img2 fl-ri mar-top-2 mar-lf-44' src='../../assets/images/share.png'></image>  -->
+          <image catchtap='setPraise' class='operate-img2 fl-ri mar-top-2 mar-lf-44' src="{{obj.isPraiseByuidx ? '../../assets/images/like.png' : '../../assets/images/unlike.png'}}"></image>
+          <!-- <image class='operate-img3 fl-ri mar-top-2' src='../../assets/images/download.png'></image> -->
+        </view>
+      </view>
+
+      <view class='author-box pad-lr-24 box-sizing border2'>
+        <image class='fl-lf author-img box-sizing' src="{{authorHeadPhoto}}"></image>
+        <view class='fl-lf mar-top-35 max-585'>
+          <view class='fs-30 text-over'>{{obj.author ? obj.author : ''}}</view>
+          <view class='fs-28 fc1 text-over'>{{obj.authorDescriptions}}</view>
+        </view>
+        <!-- <view catchtap='setFollow' class="{{'focus-box box-sizing fl-ri radius1 ' + (obj.isFollow ? 'hasfocus' : 'unfocus')}}">{{obj.isFollow ? '已关注' : '+关注'}}</view> -->
+      </view>
+
+      <view class='comment-head fs-30 fw pad-lr-24'>全部评论</view>
+
+      <view wx:for="{{comments}}" wx:key="cid">
+        <view class='pad-lr-24 comment-box border2 box-sizing' data-nickname="{{item.nickname}}" data-uidx="{{item.uidx}}" data-cid="{{item.cid}}" catchtap="commentUser">
+          <image lazy-load="{{true}}" class='user-img fl-lf' lazy-load="{{true}}" src="{{item.headphoto}}"></image>
+          <view class='user-comment fl-lf'>
+            <view class='fc1 fs-26'>{{item.nickname}}</view>
+            <view class='fc1 fs-18 comment-time'>{{item.cdate}}</view>
+            <view wx:if="{{item.identify == 1}}">
+              回复
+              <text class='fc3'>{{item.bnickname}}</text>：{{item.comment}}
+            </view>
+            <view wx:else class='fs-30 break-word'>{{item.comment}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <block wx:if="{{comments.length > 8}}">
+      <view wx:if="{{noComment}}" class='no-data text-center'>已经全部加载完毕</view>
+      <button wx:else class='not-btn loading-btn' loading="{{true}}" hover-class="none"></button>
+    </block>
+    <view wx:if="{{noComment && !comments.length}}" class='no-data text-center'>暂无评论</view>
+  </scroll-view>
+
+  <view class='bot-comment box-sizing w-100 border1' catchtap="setFocus">
+    <input class='comment-input radius1 fs-30 box-sizing bc1 fl-lf' placeholder="{{bholder ? bholder : '我来说两句...'}}" maxlength='300' confirm-type="send" focus="{{focus}}" value="{{comment}}" bindinput="hasInput" bindconfirm="confirmSend" />
+    <view class='comment-send fl-ri fs-34 fc2 text-center' catchtap="confirmSend">确认</view>
+    <!-- <view class='fl-lf comment-img-box'>
+      <image class='comment-img' mode='aspectFit' src='../../assets/images/comment.png'></image>
+    </view>
+    <image class='share-img fl-ri' mode='aspectFit' src='../../assets/images/share.png'></image> -->
+  </view>
+</view>

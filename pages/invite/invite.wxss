@@ -1,0 +1,156 @@
+/* pages/invite/invite.wxss */
+.invite-bg {
+  background: url("http://resource.miaokanvideo.com/images/mini/invite_bg2.png") left top no-repeat;
+  background-size: cover;
+}
+
+.invite-bg-money {
+  background: url("http://resource.miaokanvideo.com/images/mini/invite_bg1.png") left top no-repeat;
+  background-size: cover;
+}
+
+.invite-scroll {
+  height: 100%;
+}
+
+.invite-title-box1 {
+  padding: 90rpx 0 10rpx 0;
+}
+
+.invite-title1 {
+  width: 590rpx;
+  height: 290rpx;
+  margin-right: -38rpx;
+}
+
+.invite-title-box2 {
+  padding: 100rpx 0 24rpx 0;
+}
+
+.invite-title2 {
+  width: 464rpx;
+  height: 220rpx;
+}
+
+.invite-code-box {
+  width: 586rpx;
+  padding-bottom: 28rpx;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 34rpx auto 182rpx auto;
+}
+
+.invite-head {
+  height: 92rpx;
+  line-height: 90rpx;
+  border-bottom: 2rpx dashed rgba(100%, 100%, 100%, 0.5);
+}
+
+.invite-code {
+  height: 148rpx;
+  line-height: 148rpx;
+  color: #ffd000;
+  font-size: 66rpx;
+}
+
+.invite-bot {
+  height: 62rpx;
+  line-height: 62rpx;
+  width: 382rpx;
+  border-radius: 31rpx;
+  background-color: rgba(100%, 100%, 100%, 0.1);
+  margin: 0 auto;
+}
+
+.circle-icon {
+  width: 22rpx;
+  height: 22rpx;
+  border-radius: 11rpx;
+  background-color: rgba(100%, 100%, 100%, 0.5);
+  position: absolute;
+}
+
+.circle-icon1 {
+  top: 20rpx;
+  left: 24rpx;
+}
+.circle-icon2 {
+  top: 20rpx;
+  right: 24rpx;
+}
+.circle-icon3 {
+  bottom: 38rpx;
+  left: 24rpx;
+}
+.circle-icon4 {
+  bottom: 38rpx;
+  right: 24rpx;
+}
+
+.invite-btn-wrap1 {
+  padding-bottom: 100rpx;
+}
+
+.invite-btn-wrap2 {
+  padding-bottom: 35rpx;
+}
+
+.invite-btn {
+  height: 94rpx;
+  line-height: 94rpx;
+  border-radius: 47rpx;
+  width: 420rpx;
+  font-size: 44rpx;
+  color: #805318;
+  background-color: #ffd259;
+  margin: 0 auto 0 auto;
+}
+
+.invite-money-code-box {
+  width: 402rpx;
+  height: 560rpx;
+  position: relative;
+  margin: 40rpx auto 66rpx auto;
+}
+
+.ff-num {
+  font-family: Arial, Sans-serif;
+}
+
+.red-reward {
+  width: 100%;
+  height: 100%;
+}
+
+.red-content-box {
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.money {
+  top: 160rpx;
+  font-size: 106rpx;
+  color: #e1b473;
+  height: 108rpx;
+  line-height: 108rpx;
+  transform: rotate(-3deg);
+}
+
+.invite-text {
+  height: 32rpx;
+  line-height: 32rpx;
+  bottom: 157rpx;
+}
+
+.money-invite-code {
+  font-size: 60rpx;
+  height: 62rpx;
+  line-height: 62rpx;
+  bottom: 82rpx;
+}
+
+.bot-app-tip {
+  height: 150rpx;
+  width: 100%;
+}

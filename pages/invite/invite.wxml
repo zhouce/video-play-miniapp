@@ -1,0 +1,43 @@
+<!--pages/invite/invite.wxml-->
+<view class="{{'container ' + (money ? 'invite-bg-money' : 'invite-bg')}}">
+  <scroll-view class='text-center invite-scroll box-sizing' scroll-y="{{true}}">
+    <view wx:if="{{money}}" class='invite-title-box2'>
+      <image class='invite-title2' src='http://resource.miaokanvideo.com/images/mini/invite_title2.png'></image>
+    </view>
+    <view wx:else class='invite-title-box1'>
+      <image class='invite-title1' src='http://resource.miaokanvideo.com/images/mini/invite_title1.png'></image>
+    </view>
+
+    <view wx:if="{{money}}" class='fc0 fs-32'>我获得</view>
+    <view wx:else class='fc0 fs-32'>
+      <view>xx</view>
+      <view>一起来</view>
+    </view>
+    
+    <view wx:if="{{money}}" class='invite-money-code-box'>
+      <image class='red-reward' src='../../assets/images/reward.png'></image>
+      <view class='red-content-box money ff-num break-word'>{{money}}</view>
+      <view class='red-content-box invite-text fs-30 fc0'>使用我的邀请码</view>
+      <view class='red-content-box money-invite-code fc0 ff-num break-word'>
+        <text selectable="{{true}}">{{showCode}}</text>
+      </view>
+    </view>
+    
+    <view wx:else class='invite-code-box radius1'>
+      <view class='fc0 box-sizing fs-26 invite-head'>使用我的邀请码</view>
+      <view class='invite-code ff-num break-word'>
+        <text selectable="{{true}}">{{showCode}}</text>
+      </view>
+      <view class='fc0 fs-26 invite-bot'>你我各得一张复活卡</view>
+      <view class='circle-icon circle-icon1'></view>
+      <view class='circle-icon circle-icon2'></view>
+      <view class='circle-icon circle-icon3'></view>
+      <view class='circle-icon circle-icon4'></view>
+    </view>
+    <view class="{{money ? 'invite-btn-wrap2' : 'invite-btn-wrap1'}}">
+      <view class='invite-btn' catchtap='toGetMoney'>官方入口</view>
+    </view>
+
+    <image wx:if="{{!money}}" class='bot-app-tip' src='http://resource.miaokanvideo.com/images/mini/invite_bot.png'></image>
+  </scroll-view>
+</view>

@@ -1,0 +1,56 @@
+/* pages/my/my.wxss */
+.user-img-box {
+  padding-top: 106rpx;
+}
+
+.user-img1 {
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 95rpx;
+}
+
+.user-img2 {
+  width: 196rpx;
+  height: 196rpx;
+  border-radius: 98rpx;
+  border: 1px solid #bfbfbf;
+}
+
+.login-btn {
+  height: 64rpx;
+  line-height: 64rpx;
+  background-color: #313131;
+  border-radius: 32rpx;
+  padding: 0 50rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 49rpx 0 42rpx 0;
+}
+
+.nickname {
+  color: #343434;
+  padding: 50rpx 0 52rpx 0;
+}
+
+.border3 {
+  border-bottom: 1rpx solid #f3f3f3;
+}
+
+.my-item {
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 60rpx 0 58rpx;
+  color: #535353;
+}
+
+.my-item-img1 {
+  height: 46rpx;
+  width: 46rpx;
+  margin: 27rpx 48rpx 0 0;
+}
+
+.my-item-img2 {
+  height: 30rpx;
+  width: 20rpx;
+  margin-top: 35rpx;
+}

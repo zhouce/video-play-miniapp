@@ -1,0 +1,11 @@
+var msTOm = function (ms) {
+  var lenS = ms/1000;
+  var m = parseInt(lenS/60);
+  var mstr = m < 10 ? '0' + m : m;
+  var s = parseInt(lenS - m*60);
+  var sstr = s < 10 ? '0' + s : s;
+  return mstr + ':' + sstr;
+}
+module.exports = {
+  msTOm: msTOm
+};

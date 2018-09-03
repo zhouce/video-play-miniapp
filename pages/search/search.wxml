@@ -1,0 +1,70 @@
+<!--pages/search/search.wxml-->
+<wxs src="../../operate/time.wxs" module="time" />
+<view class="container">
+  <view class='search-head box-sizing over-hide'>
+    <view class='word-box fl-lf'>
+      <image class='fl-lf search-img' src='../../assets/images/search.png'></image>
+      <input class='search-input fl-lf box-sizing' focus="{{true}}" placeholder="输入关键词" confirm-type="search" bindinput="searchInput" value="{{searchStr}}" />
+    </view>
+    <text class='fs-27 fl-ri cancel' catchtap='backIndex'>取消</text>
+  </view>
+
+  <scroll-view hidden="{{searchStr}}" class='search-scroll box-sizing' scroll-y="{{true}}">
+    <view class='pad-lr-24 pad-top-21 box-sizing fs-32 fw'>
+      大家都在搜
+    </view>
+    <view class='hot-box over-hide fs-28'>
+      <view wx:for="{{hots}}" wx:key="pid" catchtap='searchItem' data-str="{{item.searchName}}" class='hot-item box-sizing radius1 fl-lf'>{{item.searchName}}</view>
+    </view>
+
+    <view class='pad-lr-24 box-sizing fs-32 fw mar-bot-18'>
+      历史记录
+    </view>
+
+    <block wx:for="{{history}}" wx:key="*this">
+      <view class='history-item border2 box-sizing fs-28' catchtap='searchItem' data-str="{{item}}">
+        <image class='history-img fl-lf' src='../../assets/images/history.png'></image>
+        <view class='fl-lf'>{{item}}</view>
+        <view class='delete-his fl-ri box-sizing' data-index="{{index}}" catchtap='removeHistory'>
+          <image class='delete-img fl-ri' src='../../assets/images/delete.png'></image>
+        </view>
+      </view>
+    </block>
+    <view hidden="{{!history.length}}" class='clean-his text-center fs-30 fc1'>
+      <text catchtap='clearHistory'>清空搜索记录</text>
+    </view>
+  </scroll-view>
+
+  <scroll-view hidden="{{!searchStr}}" class='search-scroll box-sizing' scroll-y="{{true}}" lower-threshold="{{46}}" bindscrolltolower="loadMore">
+    <view hidden="{{noSearch || !search.length}}">
+      <block wx:for="{{search}}" wx:key="vid">
+        <view class='search-item pad-lr-24 box-sizing border2' data-vid="{{item.vid}}" catchtap='toDetail'>
+          <view class='svideo-img-box fl-lf'>
+            <image class='full' src="{{item.videoPicUrl}}"></image>
+            <view wx:if="{{item.ms}}" class='fc0 svideo-time radius1'>{{time.msTOm(item.ms)}}</view>
+          </view>
+
+          <view class='svideo-info fl-ri'>
+            <rich-text wx:if="{{canIUse}}" class='fs-26 line-clamp2 break-word' nodes="{{item.nodes}}"></rich-text>
+            <view wx:else class='fs-26 line-clamp2 break-word'>{{item.descriptions}}</view>
+            <view class='info-bot over-hide fc1 w-100'>
+              <view class='fl-lf mw1 text-over'>{{item.author}}</view>
+              <view class='fl-ri mw2 text-over'>{{item.playNum}}次播放</view>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <view hidden="{{search.length < 10}}">
+        <view wx:if="{{noMore}}" class='no-data text-center'>已经全部加载完毕</view>
+        <button wx:else class='not-btn loading-btn' loading="{{true}}" disabled="{{true}}"></button>
+      </view>
+    </view>
+
+    <view class='fs-30 fc1 text-center' hidden="{{!noSearch}}">
+      <image class='empty-img' src='../../assets/images/empty.png'></image>
+      <view>空空如也...</view>
+    </view>
+  </scroll-view>
+
+</view>

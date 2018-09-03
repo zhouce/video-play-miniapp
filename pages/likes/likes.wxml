@@ -1,0 +1,47 @@
+<!--pages/likes/likes.wxml-->
+<wxs src="../../operate/time.wxs" module="time" />
+<wxs src="../../operate/include.wxs" module="include" />
+<view class="container">
+  <view class='likes-head border2 fs-32 fw pad-lr-24 box-sizing'>
+    <view class='fl-ri' catchtap='switchEdit'>{{isEdit ? "完成" : "编辑"}}</view>
+  </view>
+
+  <scroll-view class="{{'box-sizing ' + (isEdit ? 'likes-scroll2' : 'likes-scroll1')}}" scroll-y="{{true}}" lower-threshold="{{46}}" bindscrolltolower="loadMore">
+    <view hidden="{{isEmpty}}">
+      <block wx:for="{{likes}}" wx:key="vid">
+        <view class='likes-item pad-lr-24 box-sizing border2' data-vid="{{item.vid}}" catchtap='clickLike'>
+          <view class="{{'select-box fl-lf' + (isEdit ? ' select-box-w1' : '')}}">
+            <view hidden="{{isSelectedAll || include.isIn(selectedIds, item.vid)}}" class='select-size fl-lf box-sizing unselected'></view>
+            <image hidden="{{!isSelectedAll && !include.isIn(selectedIds, item.vid)}}" class='select-size fl-lf box-sizing ' src='../../assets/images/selected.png'></image>
+          </view>
+          <view class='lvideo-img-box fl-lf'>
+            <image class='full' src="{{item.videoPicUrl}}"></image>
+            <view wx:if="{{item.ms}}" class='fc0 lvideo-time radius1'>{{time.msTOm(item.ms)}}</view>
+          </view>
+
+          <view class="{{'lvideo-info fl-ri' + (isEdit ? ' lvideo-info-w1' : '')}}">
+            <view class='fs-26 line-clamp2 break-word'>{{item.descriptions}}</view>
+            <view class='info-bot over-hide fc1 w-100'>
+              <view class='fl-lf mw1 text-over'>{{item.author}}</view>
+              <view class='fl-ri mw2 text-over'>{{item.playNum}}次播放</view>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <view hidden="{{loading}}" class='no-data text-center' catchtap='loadMore'>{{noMore ? '已经全部加载完毕' : '点击或上拉加载更多'}}</view>
+    </view>
+
+    <view class='fs-30 fc1 text-center' hidden="{{!isEmpty}}">
+      <image class='empty-img' src='../../assets/images/empty.png'></image>
+      <view>空空如也...</view>
+    </view>
+  </scroll-view>
+
+  <view class="{{'likes-bot w-100 bc0 border1 box-sizing fs-32' + (isEdit ? ' likes-bot-h1' : '')}}">
+    <view class='lselect-btn-box fl-lf w-50 box-sizing' catchtap='setSelectedAll'>
+      <view class='lselect-btn text-center'>{{isSelectedAll ? '全不选' : '全选'}}</view>
+    </view>
+    <view catchtap='deleteLikes' class="{{'ldelete-btn text-center fl-ri w-50 ' + (selectedIds.length ? 'fc-d2' : 'fc-d1')}}">删除{{selectedIds.length ? '（' + selectedIds.length + '）' : ''}}</view>
+  </view>
+</view>

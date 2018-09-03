@@ -1,0 +1,24 @@
+<!--pages/my/my.wxml-->
+<view class='user-img-box text-center'>
+  <image wx:if="{{userInfo.headimg}}" class='box-sizing user-img2' src="{{userInfo.headimg}}"></image>
+  <image wx:else class='box-sizing user-img1' src='../../assets/images/notlogin.png'></image>
+</view>
+<view class='text-center border3'>
+  <view wx:if="{{userInfo.userid}}" class='fs-34 nickname'>{{userInfo.nickname}}</view>
+  <button wx:else class='fc0 login-btn fs-28' loading="{{getting}}" catchtap='loginBtnClick'>登录</button>
+</view>
+
+<view class='border3' catchtap='toLikes'>
+  <view class='my-item box-sizing'>
+    <image class='my-item-img1 fl-lf' src='../../assets/images/mylike.png'></image>
+    <text class='fs-30 fl-lf'>我喜欢的</text>
+    <image class='my-item-img2 fl-ri' src='../../assets/images/right-arrow.png'></image>
+  </view>
+</view>
+<view wx:if="{{canIUse}}" class='border3'>
+  <button open-type="contact" class='my-item box-sizing not-btn'>
+    <image class='my-item-img1 fl-lf' src='../../assets/images/myfeedback.png'></image>
+    <text class='fs-30 fl-lf'>问题反馈</text>
+    <image class='my-item-img2 fl-ri' src='../../assets/images/right-arrow.png'></image>
+  </button>
+</view>

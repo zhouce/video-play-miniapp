@@ -1,0 +1,127 @@
+/* pages/likes/likes.wxss */
+.likes-head {
+  height: 78rpx;
+  line-height: 76rpx;
+}
+
+.likes-scroll1 {
+  height: calc(100% - 78rpx);
+}
+
+.likes-scroll2 {
+  height: calc(100% - 180rpx);
+}
+
+.likes-item {
+  height: 216rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+.lvideo-img-box {
+  position: relative;
+  height: 154rpx;
+  width: 272rpx;
+  margin-right: 30rpx;
+}
+
+.lvideo-time {
+  position: absolute;
+  right: 10rpx;
+  bottom: 10rpx;
+  height: 29rpx;
+  line-height: 29rpx;
+  font-size: 16rpx;
+  padding: 0 14rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.lvideo-info {
+  width: 398rpx;
+  height: 100%;
+  position: relative;
+  transition-property: width;
+  transition-duration: 250ms;
+}
+
+.lvideo-info-w1 {
+  width: 335rpx;
+}
+
+.info-bot {
+  position: absolute;
+  font-size: 20rpx;
+  bottom: 0;
+  left: 0
+}
+
+.mw1 {
+  max-width: 60%;
+}
+
+.mw2 {
+  max-width: 40%;
+}
+
+.select-box {
+  height: 154rpx;
+  overflow: hidden;
+  width: 0rpx;
+  transition-property: width;
+  transition-duration: 250ms;
+}
+
+.select-box-w1 {
+  width: 63rpx;
+}
+
+.select-size {
+  height: 40rpx;
+  width: 40rpx;
+  border-radius: 20rpx;
+  margin-top: 57rpx
+}
+
+.unselected {
+  border: 2rpx solid #dcdcdc;
+}
+
+.likes-bot {
+  height: 0rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  transition-property: height;
+  transition-duration: 250ms;
+}
+
+.likes-bot-h1 {
+  height: 102rpx;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.lselect-btn-box {
+  padding: 11rpx 0;
+}
+
+.lselect-btn {
+  height: 78rpx;
+  line-height: 78rpx;
+  border-right: 2rpx solid #f3f3f3;
+}
+
+.ldelete-btn {
+  line-height: 100rpx;
+}
+
+.fc-d1 {
+  color: #ed7f88;
+}
+
+.fc-d2 {
+  color: #e60012;
+}

@@ -1,0 +1,60 @@
+<!--pages/index/index.wxml-->
+<view class='pad-lr-24 box-sizing over-hide' catchtap='toSearch'>
+  <view class='word-box fl-lf'>
+    <image class='fl-lf search-img' src='../../assets/images/search.png'></image>
+    <text class='fc1 fl-lf'>输入关键词</text>
+  </view>
+  <text class='fs-27 fl-ri cancel'>取消</text>
+</view>
+
+<swiper wx:if="{{banners.length}}" class="{{'swiper-box box-sizing ' + (canSW ? 'swiper-boxh1' : 'swiper-boxh2')}}" indicator-dots="{{true}}" autoplay="{{!isHide}}" interval="{{5000}}" circular="{{true}}" duration="{{250}}" indicator-color="#a9a4ab" indicator-active-color="#ffffff"
+  previous-margin="58rpx" next-margin="58rpx" bindchange="swiperChange">
+  <block wx:for="{{banners}}" wx:key="picUrl">
+    <swiper-item class="{{'swiper-item box-sizing ' + (index == nowIndex ? 'swiper-item-pad1' : 'swiper-item-pad2')}}" data-vid="{{item.vid}}" data-linkurl="{{item.linkurl}}" catchtap='clickSwiperItem'>
+      <image class='full swiper-img radius2' src="{{item.picUrl}}" mode="aspectFill"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class='text-center fs-32 fw body-title'>每日精选</view>
+
+<block wx:for="{{videos}}" wx:key="vid">
+  <view id="{{'video-item' + index}}" data-vid="{{item.vid}}" data-aid="{{item.aid}}">
+    <view hidden="{{nowVideo == item.vid ? true : false}}" class='pr video-wrap box-sizing pad-lr-24' data-aid="{{item.aid}}" data-vid="{{item.vid}}" catchtap="clickPlayVideo">
+      <view class='pr full'>
+        <image wx:if="{{index == 0}}" lazy-load="{{true}}" class='full radius2' src="{{item.videoPicUrl}}" mode="aspectFill" bindload="firstVideoImgLoad"></image>
+        <image wx:else lazy-load="{{true}}" class='full radius2' src="{{item.videoPicUrl}}" mode="aspectFill"></image>
+        <view class='mask full radius2'></view>
+      </view>
+
+      <view class='video-title line-clamp2 break-word box-sizing fw fs-30'>{{item.descriptions}}</view>
+      <image class='video-control-img' src='../../assets/images/click-play.png'></image>
+    </view>
+
+    <view hidden="{{nowVideo == item.vid ? false : true}}" class='pr video-wrap box-sizing'>
+      <video wx:if="{{nowVideo == item.vid}}" id="{{'index-video-' + item.vid}}" class='index-video full' src="{{item.videoUrl}}" controls="{{true}}" autoplay="{{true}}" show-center-play-btn="{{true}}" danmu-list="{{nowVideo == item.vid ? danmu : []}}" danmu-btn="{{true}}"
+        enable-danmu="{{true}}" bindplay="videoPlay" bindpause="videoPause" bindtimeupdate="timeupdate" bindended="videoEnd" bindfullscreenchange="fullScreenChange"></video>
+    </view>
+
+    <view class='video-bot box-sizing'>
+      <image lazy-load="{{true}}" class='bot-author-img fl-lf box-sizing' src="{{item.authorHeadPhoto}}"></image>
+      <view class='bot-author-name text-over fl-lf fs-26'>{{item.author}}</view>
+      <!-- <button wx:if="{{canIUse}}" open-type="share" class='not-btn share-btn bot-img mar-lf-20 fl-ri mar-top-28' hover-class="none">
+        <image class='bot-img' src='../../assets/images/share.png'></image>
+      </button> -->
+      <view class='fl-ri mar-lf-20' data-vid="{{item.vid}}" catchtap='toDetail'>
+        <image class='bot-img fl-lf mar-ri-10 mar-top-28' src='../../assets/images/comment.png'></image>
+        <view class='fl-lf'>{{item.cNum}}</view>
+      </view>
+      <view class='fl-ri' data-index="{{index}}" catchtap='setPraise'>
+        <image class='bot-img fl-lf mar-ri-10 mar-top-28' src="{{item.isPraiseByuidx ? '../../assets/images/like.png' : '../../assets/images/unlike.png'}}"></image>
+        <view class='fl-lf'>{{item.goodNum}}</view>
+      </view>
+    </view>
+  </view>
+</block>
+
+<view wx:if="{{noVideos}}" class='no-data text-center'>已经全部加载完毕</view>
+<button wx:else class='not-btn loading-btn' loading="{{true}}" disabled="{{true}}"></button>
+
+<image wx:if="{{canUseWebView}}" class='answer-entry-img' mode='aspectFit' catchtap='enterAnswer' src='../../assets/images/answer-entry.png'></image>
